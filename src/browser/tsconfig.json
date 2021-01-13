@@ -1,0 +1,11 @@
+{
+  "files": ["index.ts"],
+  "extends": "../../tsconfig.base.json",
+
+  "compilerOptions": {
+    "outDir": "../../lib/browser",
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["DOM"]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    // emitting JS files
+    "noEmitOnError": true,
+
+    // emitting types
+    "declaration": true,
+    "declarationMap": true,
+
+    // handling source modules
+    "moduleResolution": "node",
+    "isolatedModules": true,
+
+    // checking syntax
+    "lib": ["ESNext"],
+    "strict": true,
+    "noImplicitReturns": true,
+
+    // formatting
+    "newLine": "LF"
+  }
+}

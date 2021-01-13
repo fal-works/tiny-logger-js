@@ -1,0 +1,44 @@
+{
+  "name": "@fal-works/tiny-logger",
+  "description": "Emit logs with prefix.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "FAL",
+  "keywords": [
+    "log",
+    "logger"
+  ],
+  "files": [
+    "lib",
+    "src"
+  ],
+  "main": "lib/node/index.js",
+  "module": "lib/node/index.mjs",
+  "browser": "lib/browser/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {
+    "@types/eslint": "^7.2.6",
+    "@types/node": "^14.14.20",
+    "@types/prettier": "^2.1.6",
+    "@typescript-eslint/eslint-plugin": "^4.13.0",
+    "@typescript-eslint/parser": "^4.13.0",
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.3"
+  },
+  "scripts": {
+    "build": "run-s clean transpile post-transpile lint:lib format:lib",
+    "transpile": "run-p transpile:*",
+    "transpile:browser": "tsc --build src/browser/tsconfig.json",
+    "transpile:node": "tsc --build src/node/tsconfig.json",
+    "transpile:node-esm": "tsc --build src/node/tsconfig.esm.json",
+    "lint:lib": "eslint --fix lib",
+    "format:lib": "prettier --write lib",
+    "clean": "node scripts/clean.js",
+    "post-transpile": "node scripts/post-transpile.js"
+  }
+}
