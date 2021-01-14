@@ -9,8 +9,8 @@
     "logger"
   ],
   "files": [
-    "lib",
-    "src"
+    "/lib/",
+    "/src/"
   ],
   "main": "lib/node/index.js",
   "module": "lib/node/index.mjs",
