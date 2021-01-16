@@ -6,31 +6,30 @@ type PrintFunction = (message?: any, ...optionalParams: any[]) => void;
 /**
  * Object that has `write` method which simply outputs any `string`, such as `process.stdout`.
  */
-type ProcessOut = { write: (str: Uint8Array | string) => any };
+type Out = { write: (str: Uint8Array | string) => any };
 
 /**
  * Creates a function that outputs given prefix and then calls any printing function.
- * @param processOut Any object with `write()`, such as `process.stdout`.
+ * @param out Any object with `write()`, such as `process.stdout`.
  * @param print Any printing function such as `console.log`.
  */
 export const create = (
   prefix: string,
-  processOut: ProcessOut,
+  out: Out,
   print: PrintFunction
 ): PrintFunction => (message, ...optionalParams) => {
-  processOut.write(prefix);
+  out.write(prefix);
   print(message, ...optionalParams);
 };
 
 /**
  * Creates a function that prints any `string` with a given prefix.
- * @param processOut Any object with `write()`, such as `process.stdout`.
+ * @param out Any object with `write()`, such as `process.stdout`.
  */
-export const createSimple = (
-  prefix: string,
-  processOut: ProcessOut
-): PrintFunction => (message: string) => {
-  processOut.write(prefix);
-  processOut.write(message);
-  processOut.write("\n");
+export const createSimple = (prefix: string, out: Out): PrintFunction => (
+  message: string
+) => {
+  out.write(prefix);
+  out.write(message);
+  out.write("\n");
 };
