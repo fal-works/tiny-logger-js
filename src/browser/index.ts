@@ -8,9 +8,7 @@ export const create = (prefix: string, print: PrintFunction): PrintFunction => (
   message,
   optionalParams
 ) => {
-  if (typeof message === "string") {
+  if (typeof message === "string")
     print(`${prefix}${message}`, ...optionalParams);
-  } else {
-    print(prefix, message, ...optionalParams);
-  }
+  else print(prefix, message, ...optionalParams);
 };
