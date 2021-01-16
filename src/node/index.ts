@@ -17,9 +17,9 @@ export const create = (
   prefix: string,
   processOut: ProcessOut,
   print: PrintFunction
-): PrintFunction => (message: any[]) => {
+): PrintFunction => (message, ...optionalParams) => {
   processOut.write(prefix);
-  print(...message);
+  print(message, ...optionalParams);
 };
 
 /**
