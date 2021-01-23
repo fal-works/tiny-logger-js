@@ -3,8 +3,8 @@
 
   "compilerOptions": {
     "outDir": "../../lib/node/esm",
-    "module": "ESNext",
-    "lib": ["ESNext"],
+    "module": "ES2015",
+    "lib": ["ES2018"],
 
     "declaration": false,
     "declarationMap": false

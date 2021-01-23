@@ -4,8 +4,8 @@
 
   "compilerOptions": {
     "outDir": "../../lib/node",
-    "target": "ESNext",
+    "target": "ES2019",
     "module": "CommonJS",
-    "lib": ["ESNext"]
+    "lib": ["ES2018"]
   }
 }

@@ -4,8 +4,8 @@
 
   "compilerOptions": {
     "outDir": "../../lib/browser",
-    "target": "ESNext",
-    "module": "ESNext",
+    "target": "ES2019",
+    "module": "ES2015",
     "lib": ["ESNext", "DOM"]
   }
 }
