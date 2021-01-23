@@ -26,9 +26,9 @@ export const create = (
  * Creates a function that prints any `string` with a given prefix.
  * @param out Any object with `write()`, such as `process.stdout`.
  */
-export const createSimple = (prefix: string, out: Out): PrintFunction => (
+export const createSimple = (prefix: string, out: Out) => (
   message: string
-) => {
+): void => {
   out.write(prefix);
   out.write(message);
   out.write("\n");
