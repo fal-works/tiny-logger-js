@@ -4,42 +4,31 @@ parserOptions:
   sourceType: module
 
 overrides:
-  # TypeScript
+  # basic rules
   - files:
       - "**/*.ts"
+      - scripts/**/*.js
     extends:
       - eslint:recommended
       - prettier
-      - plugin:@typescript-eslint/recommended
-      - prettier/@typescript-eslint
-    parser: "@typescript-eslint/parser"
-    plugins:
-      - "@typescript-eslint"
-    rules:
-      "@typescript-eslint/no-explicit-any": "off"
-      "@typescript-eslint/no-empty-function": "off"
 
-  # Source code for browsers environment
-  - files:
-      - src/browser/index.ts
-      - lib/browser/index.js
-    env:
-      browser: true
-    parserOptions:
-      project: src/browser/tsconfig.json
-
-  # Source code for Node.js environment
+  # Node.js environment
   - files:
       - src/node/**/*.ts
-      - lib/node/**/*.{js,mjs,cjs}
+      - scripts/**/*.js
     env:
       es2017: true
       node: true
     parserOptions:
       ecmaVersion: 2019
-      project: src/node/tsconfig.json
 
-  # Pre-format all JavaScript files
+  # browser environment
+  - files:
+      - src/browser/index.ts
+    env:
+      browser: true
+
+  # pre-format JavaScript files
   - files:
       - "**/*.{js,mjs,cjs}"
     rules:
@@ -52,14 +41,27 @@ overrides:
           allowArrayStart: true
           allowClassStart: true
 
-  # Scripts for dev/build
+  # rules for TypeScript
   - files:
-      - scripts/**/*.{js,mjs,cjs}
-    env:
-      es2017: true
-      node: true
-    parserOptions:
-      ecmaVersion: 2019
+      - "**/*.ts"
     extends:
-      - eslint:recommended
-      - prettier
+      - plugin:@typescript-eslint/recommended
+      - prettier/@typescript-eslint
+    parser: "@typescript-eslint/parser"
+    plugins:
+      - "@typescript-eslint"
+    rules:
+      "@typescript-eslint/no-explicit-any": "off"
+      "@typescript-eslint/no-empty-function": "off"
+
+  # Source code for browsers
+  - files:
+      - src/browser/index.ts
+    parserOptions:
+      project: src/browser/tsconfig.json
+
+  # Source code for Node.js
+  - files:
+      - src/node/**/*.ts
+    parserOptions:
+      project: src/node/tsconfig.json
