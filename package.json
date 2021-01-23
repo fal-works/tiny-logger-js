@@ -29,14 +29,14 @@
     "typescript": "^4.1.3"
   },
   "scripts": {
-    "build": "run-s clean transpile lint:lib format:lib",
+    "build": "run-s clean transpile format:lib",
     "clean": "node scripts/clean.js",
     "transpile": "run-p transpile:*",
     "transpile:browser": "tsc --build src/browser/tsconfig.json",
     "transpile:node": "tsc --build src/node/tsconfig.json",
     "transpile:node-esm": "tsc --build src/node/tsconfig.esm.json",
     "posttranspile": "node scripts/post-transpile.js",
-    "lint:lib": "eslint --fix lib",
+    "preformat:lib": "eslint --fix lib",
     "format:lib": "prettier --write lib"
   }
 }
