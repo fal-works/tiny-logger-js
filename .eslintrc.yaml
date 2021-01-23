@@ -1,0 +1,65 @@
+env:
+  es6: true
+parserOptions:
+  sourceType: module
+
+overrides:
+  # TypeScript
+  - files:
+      - "**/*.ts"
+    extends:
+      - eslint:recommended
+      - prettier
+      - plugin:@typescript-eslint/recommended
+      - prettier/@typescript-eslint
+    parser: "@typescript-eslint/parser"
+    plugins:
+      - "@typescript-eslint"
+    rules:
+      "@typescript-eslint/no-explicit-any": "off"
+      "@typescript-eslint/no-empty-function": "off"
+
+  # Source code for browsers environment
+  - files:
+      - src/browser/index.ts
+      - lib/browser/index.js
+    env:
+      browser: true
+    parserOptions:
+      project: src/browser/tsconfig.json
+
+  # Source code for Node.js environment
+  - files:
+      - src/node/**/*.ts
+      - lib/node/**/*.{js,mjs,cjs}
+    env:
+      es2017: true
+      node: true
+    parserOptions:
+      ecmaVersion: 2019
+      project: src/node/tsconfig.json
+
+  # Pre-format all JavaScript files
+  - files:
+      - "**/*.{js,mjs,cjs}"
+    rules:
+      lines-around-comment:
+        - error
+        - beforeBlockComment: true
+          beforeLineComment: true
+          allowBlockStart: true
+          allowObjectStart: true
+          allowArrayStart: true
+          allowClassStart: true
+
+  # Scripts for dev/build
+  - files:
+      - scripts/**/*.{js,mjs,cjs}
+    env:
+      es2017: true
+      node: true
+    parserOptions:
+      ecmaVersion: 2019
+    extends:
+      - eslint:recommended
+      - prettier
