@@ -2,15 +2,15 @@
   "env": {
     "es6": true
   },
-  "extends": ["eslint:recommended", "prettier"],
   "parserOptions": {
-    "sourceType": "module",
-    "ecmaVersion": 2019
+    "sourceType": "module"
   },
   "overrides": [
     {
       "files": ["**/*.ts"],
       "extends": [
+        "eslint:recommended",
+        "prettier",
         "plugin:@typescript-eslint/recommended",
         "prettier/@typescript-eslint"
       ],
@@ -33,23 +33,40 @@
     {
       "files": ["src/node/**/*.ts", "lib/node/**/*.{js,mjs,cjs}"],
       "env": {
+        "es2017": true,
         "node": true
       },
       "parserOptions": {
+        "ecmaVersion": 2019,
         "project": "src/node/tsconfig.json"
       }
     },
     {
-      "files": ["**/*.{js,mjs,cjs,ts}"],
+      "files": ["**/*.{js,mjs,cjs}"],
       "rules": {
-        "lines-around-comment": "error"
+        "lines-around-comment": [
+          "error",
+          {
+            "beforeBlockComment": true,
+            "beforeLineComment": true,
+            "allowBlockStart": true,
+            "allowObjectStart": true,
+            "allowArrayStart": true,
+            "allowClassStart": true
+          }
+        ]
       }
     },
     {
       "files": ["scripts/**/*.{js,mjs,cjs}"],
       "env": {
+        "es2017": true,
         "node": true
-      }
+      },
+      "parserOptions": {
+        "ecmaVersion": 2019
+      },
+      "extends": ["eslint:recommended", "prettier"]
     }
   ]
 }
