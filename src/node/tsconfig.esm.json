@@ -4,6 +4,7 @@
   "compilerOptions": {
     "outDir": "../../lib/node/esm",
     "module": "ESNext",
+    "lib": ["ESNext"],
 
     "declaration": false,
     "declarationMap": false

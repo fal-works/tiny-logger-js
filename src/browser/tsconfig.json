@@ -6,6 +6,6 @@
     "outDir": "../../lib/browser",
     "target": "ESNext",
     "module": "ESNext",
-    "lib": ["DOM"]
+    "lib": ["ESNext", "DOM"]
   }
 }

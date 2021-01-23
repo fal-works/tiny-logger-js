@@ -5,6 +5,7 @@
   "compilerOptions": {
     "outDir": "../../lib/node",
     "target": "ESNext",
-    "module": "CommonJS"
+    "module": "CommonJS",
+    "lib": ["ESNext"]
   }
 }
